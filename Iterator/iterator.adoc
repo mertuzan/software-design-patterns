@@ -1,0 +1,62 @@
+.Iterator Pattern UML
+
+[uml,file="IteratorPattern.png"]
+--
+left to right direction
+
+interface Aggregate{
++Iterator getIterator()
+}
+
+interface Iterator{
++void first()
++void next()
++boolean isDone()
++Ders currentItem()
+}
+
+class DersAggregate{
+-List<Ders> dersler
++DersAggregate()
+}
+
+class DersIterator{
+-int index
+-List<Ders> dersler
++DersIterator()
+}
+
+class Ders{
+-String kod
+-String ad
+-int ogrSayisi
++Ders()
++String getKod()
++String getAd()
++String getOgrSayisi()
+}
+
+
+class IteratorPattern{
++{static} List<Ders> bilgMuhDersEkle()
++{static} List<Ders> insaatMuhDersEkle()
++{static} void main()
+}
+
+class IteratorThread{
+-Iterator iterator
++IteratorThread()
++void printDersler()
++void run()
+}
+DersIterator..|>Iterator
+DersAggregate..|>Aggregate
+DersAggregate --> DersIterator: <<use>>
+IteratorPattern --> IteratorThread: <<use>>
+IteratorThread --> DersAggregate: <<use>>
+DersAggregate-->Ders: <<use>>
+DersIterator-->Ders: <<use>>
+--
+
+    
+    

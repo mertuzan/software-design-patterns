@@ -1,0 +1,44 @@
+.Observer Pattern UML
+
+[uml,file="ObserverPattern.png"]
+--
+
+interface Subject{
++void addObserver()
++void removeObserver()
++void doNotify()
+}
+
+interface Observer{
++void update()
+}
+
+class DieselStation{
+-List<Observer> observerList
+-double price
+-double oldPrice
++DieselStation()
++void setPrice()
+}
+
+class DieselCustomer1{
+}
+class DieselCustomer2{
+}
+class priceThread{
+-DieselStation dieselStation
++priceThread()
++void run()
+}
+class ObserverPattern{
++{static}void main()
+}
+
+DieselStation..|>Subject
+DieselCustomer1 ..|>Observer
+DieselCustomer2 ..|>Observer
+ObserverPattern-->priceThread: <<use>>
+priceThread-->DieselStation
+DieselStation-->Observer
+
+--
